@@ -1,0 +1,11 @@
+Email,First Name,Last Name,Organization,Organization Type,Country,Language
+test1@example.com,Anna,Schmidt,Stadttheater Musterstadt,theatre,Germany,de
+test2@example.com,Pierre,Dubois,Festival du Théâtre Vivant,festival,France,fr
+test3@example.com,James,Wilson,Northline Productions,producer,United Kingdom,en
+TEST1@example.com,Anna,Schmidt,Stadttheater Musterstadt,theatre,Germany,de
+not-an-email,Broken,Row,Broken Data,theatre,Germany,de
+someone@mailinator.com,Temp,User,Disposable Org,theatre,Germany,de
+info@theatre-example.org,Front,Desk,Theatre Example,theatre,Austria,de
+test4@example.com,Maria,Lopez,Compañía Nueva,production company,Spain,es
+test5@example.com,Jan,Kowalski,Teatr Nowy,theatre,Poland,pl
+test6@example.com,Sofia,Rossi,Teatro dell'Arte,theatre,Italy,it
