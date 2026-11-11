@@ -1,0 +1,32 @@
+# Production-style test stack for the VPS (NOT the existing Beget hosting).
+# Brings up PostgreSQL + Listmonk. The agent runs outside this stack and
+# talks to Listmonk over the loopback/public interface you configure.
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: kulisa
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?set POSTGRES_PASSWORD}
+      POSTGRES_DB: kulisa
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    restart: unless-stopped
+
+  listmonk:
+    image: listmonk/listmonk:latest
+    depends_on:
+      - db
+    environment:
+      LISTMONK_app__address: 0.0.0.0:9000
+      LISTMONK_db__host: db
+      LISTMONK_db__user: kulisa
+      LISTMONK_db__password: ${POSTGRES_PASSWORD}
+      LISTMONK_db__database: listmonk
+      LISTMONK_db__ssl_mode: disable
+    command: [sh, -c, "yes | ./listmonk --install && ./listmonk"]
+    ports:
+      - "127.0.0.1:9000:9000"
+    restart: unless-stopped
+
+volumes:
+  pgdata:
